@@ -141,7 +141,7 @@ GEM
       gemoji (>= 3, < 5)
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
-    json (2.13.2)
+    json (2.6.3)
     json-minify (0.0.3)
       json (> 0)
     kramdown (2.5.1)
@@ -241,6 +241,7 @@ DEPENDENCIES
   jekyll-target-blank
   jekyll-twitter-plugin
   jemoji
+  json (~> 2.6.1)
   mini_racer
   unicode_utils
   webrick
