@@ -21,6 +21,10 @@ jobs:
       with:
         ruby-version: '3.1.2'
         bundler-cache: true
+    - name: Install ImageMagick
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y imagemagick
     - name: Install deps
       run: |
         npm install -g mermaid.cli
