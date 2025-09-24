@@ -9,7 +9,7 @@ image: /assets/img/pysm-methods-figure.jpg
 
 ![Small-scale Galactic emission realizations from the PySM methods paper](/assets/img/pysm-methods-figure.jpg)
 
-The *Astrophysical Journal* formally published our paper, [*Full-sky Models of Galactic Microwave Emission and Polarization at Sub-arcminute Scales for the Python Sky Model*](https://iopscience.iop.org/article/10.3847/1538-4357/adf212), on **September 12, 2025**. We are sharing this update now that the issue is out, following up on the [March note about the arXiv submission](https://www.zonca.dev/posts/2025-03-03-paper-pysm-models). This work represents the efforts of the entire Pan Experiment Galactic Science Group.
+The *Astrophysical Journal* formally published our paper, [*Full-sky Models of Galactic Microwave Emission and Polarization at Sub-arcminute Scales for the Python Sky Model*](https://iopscience.iop.org/article/10.3847/1538-4357/adf212), on **September 12, 2025**. We are sharing this update now that the issue is out, and this work represents the efforts of the entire Pan Experiment Galactic Science Group.
 
 You can still read the open-access version on [arXiv:2502.20452](https://arxiv.org/abs/2502.20452), and the latest software documentation lives at the [PySM3 docs](https://pysm3.readthedocs.io/).
 
@@ -33,4 +33,3 @@ Beyond the bundle definitions, the publication provides validation and performan
 All of these models, and experiment-specific sky realizations derived from them, are available for download through the [CMB-S4 Data Portal](https://data.cmb-s4.org).
 
 In addition, the paper's LaTeX sources and the notebooks used for figures live in the [galsci/pysm_methods_paper](https://github.com/galsci/pysm_methods_paper) repository.
-
