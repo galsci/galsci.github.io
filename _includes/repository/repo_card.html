@@ -50,9 +50,10 @@
   };
   
   const repo = '{{ include.repo }}';
-  const card = document.querySelector(`[data-repo="${repo}"]`);
+  // Use previousElementSibling which is safe as we control the template structure
+  const card = document.currentScript.previousElementSibling;
   
-  if (!card) {
+  if (!card || card.dataset.repo !== repo) {
     console.error('Could not find card for repo:', repo);
     return;
   }
