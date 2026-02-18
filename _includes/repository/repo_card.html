@@ -34,11 +34,36 @@
 
 <script>
 (function() {
-  const card = document.currentScript.previousElementSibling;
-  const repo = card.dataset.repo;
+  // Language color constants (shared across all instances)
+  window.GITHUB_LANGUAGE_COLORS = window.GITHUB_LANGUAGE_COLORS || {
+    'Python': '#3572A5',
+    'JavaScript': '#f1e05a',
+    'TypeScript': '#2b7489',
+    'Java': '#b07219',
+    'C++': '#f34b7d',
+    'C': '#555555',
+    'Go': '#00ADD8',
+    'Rust': '#dea584',
+    'Ruby': '#701516',
+    'PHP': '#4F5D95',
+    'Shell': '#89e051'
+  };
+  
+  const repo = '{{ include.repo }}';
+  const card = document.querySelector(`[data-repo="${repo}"]`);
+  
+  if (!card) {
+    console.error('Could not find card for repo:', repo);
+    return;
+  }
   
   fetch(`https://api.github.com/repos/${repo}`)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      }
+      return response.json();
+    })
     .then(data => {
       // Update description
       const descEl = card.querySelector('[data-description]');
@@ -63,26 +88,12 @@
         langEl.style.display = 'inline-flex';
         langNameEl.textContent = data.language;
         
-        // Set language color based on common language colors
-        const langColors = {
-          'Python': '#3572A5',
-          'JavaScript': '#f1e05a',
-          'TypeScript': '#2b7489',
-          'Java': '#b07219',
-          'C++': '#f34b7d',
-          'C': '#555555',
-          'Go': '#00ADD8',
-          'Rust': '#dea584',
-          'Ruby': '#701516',
-          'PHP': '#4F5D95',
-          'Shell': '#89e051'
-        };
         const colorEl = card.querySelector('.language-color');
-        colorEl.style.backgroundColor = langColors[data.language] || '#858585';
+        colorEl.style.backgroundColor = window.GITHUB_LANGUAGE_COLORS[data.language] || '#858585';
       }
     })
     .catch(error => {
-      console.error('Error fetching repo data:', error);
+      console.error('Error fetching repo data for', repo, ':', error);
       const descEl = card.querySelector('[data-description]');
       descEl.textContent = 'Error loading repository information';
     });
